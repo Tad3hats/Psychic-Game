@@ -28,26 +28,41 @@ console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesL
     //append userGuess to guessSoFar-------------need help here!!
     for (var j = 6; j < guessesLeft[6]; j--) {
         if(j>0){
-    guessesSoFar.push(userGuess);
+    guessesSoFar.push(userGuess[j]);
         }
     }
 
-    //a correct guess increases your win count    
-         if(userGuess === computerChoice){
-             wins++;
-    //incorrect guess decreases your guessLeft count         
-         }else{
+         // the user guess is part of the alphabet and wasnt already picked by user then add it to array
+            if (guessesSoFar.indexOf(userGuess) < 0 && alphabet.indexOf(userGuess) >= 0) {
+                guessesSoFar[guessesSoFar.length]=userGuess;
+
+                // if it is a new letter then decrease remaining guesses by 1
              guessesLeft--;
          }
+
+             //a correct guess increases your win count    
+             if(userGuess === computerChoice){
+                wins++;
+                console.log("You won!")
+                console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerChoice);
+               guessesLeft=6;
+               guessesSoFar=[];
+               computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+               }
+   
      //if you have 0 guess left, then your losses count increases
          if(guessesLeft === 0){
              losses++;
+             console.log("sorry, you lost!  Try again.")
+             console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerChoice);
              guessesLeft=6;
-         }
+             guessesSoFar=[];
+             computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+            }
      
          
      // Displaying progress to HTML
-    var html = "<p><h1>The Psychic Game</h1></p>" + "<p><h4>Guess what letter I'm thinking of</h4></p>" + "<p><h4>Wins: " + wins + "</h4></p>" + "<p><h4>Losses: " + losses + "</h4></p>" + "<p><h4>Guesses Left: " + guessesLeft + "</h4></p>" + "<p><h4>Your guesses so far: " + guessesSoFar + "</h4></p>";
+    var html = "<p><h1>The Psychic Game</h1></p>" + "<p><h4>Guess what letter I'm thinking of:</h4></p>" + "<p><h4>Wins: " + wins + "</h4></p>" + "<p><h4>Losses: " + losses + "</h4></p>" + "<p><h4>Guesses left: " + guessesLeft + "</h4></p>" + "<p><h4>Your guesses so far: " + guessesSoFar + "</h4></p>";
 
     // place html into the game ID
     document.querySelector("#game").innerHTML = html;
