@@ -43,7 +43,8 @@ console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesL
              //a correct guess increases your win count    
              if(userGuess === computerChoice){
                 wins++;
-                console.log("You won!")
+                console.log("You won!");
+                alert("You won!");
                 console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerChoice);
                guessesLeft=6;
                guessesSoFar=[];
@@ -53,7 +54,8 @@ console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesL
      //if you have 0 guess left, then your losses count increases
          if(guessesLeft === 0){
              losses++;
-             console.log("sorry, you lost!  Try again.")
+             console.log("sorry, you lost!  Try again.");
+             alert("Sorry, you lost.  Try again.");
              console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesLeft + " Guesses so far: " + guessesSoFar + " Computer picked: " + computerChoice);
              guessesLeft=6;
              guessesSoFar=[];
@@ -62,10 +64,10 @@ console.log("Wins: " + wins + " Losses: " + losses + " GuessesLeft: " + guessesL
      
          
      // Displaying progress to HTML
-    var html = "<p><h1>The Psychic Game</h1></p>" + "<p><h4>Guess what letter I'm thinking of:</h4></p>" + "<p><h4>Wins: " + wins + "</h4></p>" + "<p><h4>Losses: " + losses + "</h4></p>" + "<p><h4>Guesses left: " + guessesLeft + "</h4></p>" + "<p><h4>Your guesses so far: " + guessesSoFar + "</h4></p>";
+    var html = "<p><h1>The Psychic Game</h1></p>" + "<p><h4>Guess what letter I'm thinking of:</h4></p>" + "<p><h4>Wins: " + wins + "</h4></p>" + 
+    "<p><h4>Losses: " + losses + "</h4></p>" + "<p><h3>Guesses left: " + guessesLeft + "</h3></p>" + "<p><h4>Your guesses so far: " + guessesSoFar + "</h4></p>";
 
     // place html into the game ID
     document.querySelector("#game").innerHTML = html;
-
 
      } 
